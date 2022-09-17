@@ -7,6 +7,7 @@ import AlarmList from "./src/screens/AlarmList";
 import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import { RootStackParamList } from "./src/screenTypes";
 import AlarmEdit from "./src/screens/AlarmEdit";
+import AlarmRinging from "./src/screens/AlarmRinging";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
@@ -49,6 +50,11 @@ export default function App() {
             options={({ route }) => ({
               title: capitalize(route.params.mode) + " Alarm",
             })}
+          />
+          <Stack.Screen
+            name="AlarmRinging"
+            component={AlarmRinging}
+            options={{ title: "AlarmRinging"}}
           />
           <Stack.Screen 
             name="Success"

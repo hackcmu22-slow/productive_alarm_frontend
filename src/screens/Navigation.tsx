@@ -4,6 +4,36 @@ import { Text } from "react-native-paper";
 import CustomButton from "../components/CustomButton";
 import { ScreenProps } from "../screenTypes";
 
+// Standardized template for card
+const styles = StyleSheet.create({
+  button: {
+    width: 160,
+  },
+  card: {
+    width: "80%",
+    marginTop: 20,
+    padding: 20,
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  titleContainer: {
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "100%",
+  },
+  title: {
+    marginTop: 24,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
+
 const Navigation: React.FC<ScreenProps<"Navigation">> = ({
   navigation,
 }: ScreenProps<"Navigation">) => {
@@ -77,36 +107,7 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({
       </ScrollView>
     </SafeAreaView>
   );
-};
+}
 
-// Standardized template for card
-const styles = StyleSheet.create({
-  button: {
-    width: 160,
-  },
-  card: {
-    width: "80%",
-    marginTop: 20,
-    padding: 20,
-  },
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  titleContainer: {
-    flex: 1,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    width: "100%",
-  },
-  title: {
-    marginTop: 24,
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});
 
 export default Navigation;
