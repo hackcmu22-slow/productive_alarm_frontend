@@ -32,14 +32,8 @@ const Register: React.FC = () => {
             email: userCredential.user.email!,
             name: name,
             birthday: null,
-            isMale: true,
-            mostRecentIpptScore: null,
-            isDiverCommandoGuards: false,
-            intendedIpptDate: null,
-            trainingPlan: [],
-            pushups: [],
-            situps: [],
-            runningData: [],
+            numberOfCoins: 0,
+            dailyStreak: 0,
           };
           setDoc(
             doc(firebaseFirestore, "userProfiles", userCredential.user.uid),

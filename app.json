@@ -2,6 +2,7 @@
   "expo": {
     "name": "productive_alarm_frontend",
     "slug": "productive_alarm_frontend",
+        "jsEngine": "hermes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

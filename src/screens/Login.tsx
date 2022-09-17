@@ -59,7 +59,7 @@ const Login: React.FC = ({ navigation }: any) => {
       >
         <Image
           style={{ height: 260, width: 260 }}
-          source={require("../assets/images/damian.png")}
+          source={require("../assets/images/productive_alarm_logo.png")}
         />
       </View>
       <View
@@ -96,7 +96,7 @@ const Login: React.FC = ({ navigation }: any) => {
           mode="outlined"
           color={Colors[colorScheme].tint}
           style={styles.button}
-          onPress={handleLogin}
+          onPress={navigation.navigate("Register")}
         >
           SIGN UP
         </CustomButton>
