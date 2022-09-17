@@ -26,7 +26,11 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   title: {
+<<<<<<< HEAD
     marginTop: "70%",
+=======
+    marginTop: '70%',
+>>>>>>> 9379def (functional waiting page)
     fontSize: 20,
     fontWeight: "bold",
   },

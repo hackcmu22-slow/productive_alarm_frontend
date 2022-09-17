@@ -54,8 +54,12 @@ export default function App() {
             options={{ title: "Success"}}
           />
           <Stack.Screen 
+<<<<<<< HEAD
             name="Wait" 
             component={Wait} 
+=======
+            name="Wait" component={Wait} 
+>>>>>>> 9379def (functional waiting page)
             options={{ title: "Wait"}}
           />
           <Stack.Screen
