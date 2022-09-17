@@ -42,7 +42,7 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                     style={styles.button}
                     onPress={() => navigation.navigate('TakePictureScreen')}
                 >
-                Success
+                Take Picture
                 </CustomButton>
                 <CustomButton
                     mode="outlined"
