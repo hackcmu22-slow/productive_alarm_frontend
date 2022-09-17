@@ -14,7 +14,7 @@ const Success: React.FC = ({ navigation }: any) => {
         <CustomButton
             mode="outlined"
             style={styles.button}
-            onPress={() => navigation.navigate('Alarm')}
+            onPress={() => navigation.navigate('Alarms')}
         >
         Return
         </CustomButton>
