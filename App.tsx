@@ -18,16 +18,6 @@ export default function App() {
   return (
     <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
-<<<<<<< HEAD
-            <Stack.Navigator initialRouteName="Navigation">
-                <Stack.Screen name="Navigation" component={Navigation} options={{ title: "Navigation"}}/>
-                <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
-                <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
-                <Stack.Screen name="Alarm" component={AlarmList} options={{ title: "Alarm"}}/>
-                <Stack.Screen name="TakePictureScreen" component={TakePictureScreen} options={{ title: "TakePictureScreen"}}/>
-                <Stack.Screen name="TEMPLATE COPY ME" component={TemplateCopyMe} options={{ title: "Template copy me"}}/>
-            </Stack.Navigator>
-=======
         <Stack.Navigator initialRouteName="Navigation">
           <Stack.Screen
             name="Navigation"
@@ -62,7 +52,6 @@ export default function App() {
             options={{ title: "Template copy me" }}
           />
         </Stack.Navigator>
->>>>>>> master
       </NavigationContainer>
     </PaperProvider>
   );
