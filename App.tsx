@@ -16,6 +16,7 @@ import Wait from "./src/screens/Wait";
 import Dashboard from "./src/screens/Dashboard";
 import TakePictureScreen from "./src/screens/TakePictureScreen";
 import CameraScreen from "./src/screens/CameraScreen";
+import BottomTabShifting from './src/navigation/BottomTabs';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -89,7 +90,7 @@ export default function App() {
           />
           
         </Stack.Navigator>
-
+        {/* <BottomTabShifting /> */}
       </NavigationContainer>
     </PaperProvider>
   );
