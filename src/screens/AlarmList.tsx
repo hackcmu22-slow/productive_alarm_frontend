@@ -1,3 +1,4 @@
+import axios from "axios";
 import * as React from "react";
 import {
   NativeScrollEvent,
@@ -7,9 +8,9 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { AnimatedFAB, Text } from "react-native-paper";
+import { AnimatedFAB, Button, Text } from "react-native-paper";
 import AlarmListContext from "../components/AlarmListContext";
-import AlarmListing  from "../components/AlarmListing";
+import AlarmListing from "../components/AlarmListing";
 import withAlarmFiring from "../components/withAlarmFiring";
 import { ScreenProps } from "../screenTypes";
 
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
 });
 
 interface AlarmListProps extends ScreenProps<"Alarms"> {}
-
 
 const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
   const [isFABExtended, setIsFABExtended] = React.useState(false);
@@ -83,9 +83,23 @@ const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
 
   const listOfAlarms = Object.entries(alarms);
 
+  const onPing = async () => {
+    try {
+      const response = await axios.get("http://172.26.69.11:5000/submit");
+      console.log(response);
+    } catch (e) {
+      console.log("rip");
+      console.log(e);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.outerContainer}>
-      <ScrollView onScroll={onScroll} style={styles.container} scrollEventThrottle={20}>
+      <ScrollView
+        onScroll={onScroll}
+        style={styles.container}
+        scrollEventThrottle={20}
+      >
         {listOfAlarms.length === 0 && (
           <View style={styles.noAlarmsText}>
             <Text variant="bodyLarge">You don't have any alarms yet.</Text>

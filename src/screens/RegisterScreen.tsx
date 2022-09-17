@@ -24,7 +24,7 @@ const Register: React.FC = () => {
       setSnackMessage("Please enter your name");
       return;
     }
-    createUserWithEmailAndPassword(firebaseAuth, email.trim(), password)
+    return createUserWithEmailAndPassword(firebaseAuth, email.trim(), password)
       .then((userCredential) => {
         console.log(userCredential.user.email, "signed in successfully");
         try {
@@ -99,7 +99,7 @@ const Register: React.FC = () => {
       ></CustomSnackBar>
     </View>
   );
-}
+};
 
 export default Register;
 
