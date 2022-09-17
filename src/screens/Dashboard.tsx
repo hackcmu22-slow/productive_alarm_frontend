@@ -8,7 +8,7 @@ import { ScreenProps } from "../screenTypes";
 
 const FlexDirectionBasics = () => {
   const [Point, setPoint] = useState(120);
-  const [Streak, setStreak] = useState(4);
+  const [Streak, setStreak] = useState(5);
   const [TotalStreak, setTotalStreak] = useState(10);
   const [Succeed, setSucceed] =useState("gold");
   const friend = require('../assets/images/refer_a_friend.png' );
