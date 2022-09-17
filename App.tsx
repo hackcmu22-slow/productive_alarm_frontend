@@ -6,6 +6,7 @@ import Register from "./src/screens/RegisterScreen";
 import AlarmList from "./src/screens/AlarmList";
 import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import Navigation from "./src/screens/Navigation";
+import Success from "./src/screens/Success";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
                 <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
                 <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
                 <Stack.Screen name="Alarm" component={AlarmList} options={{ title: "Alarm"}}/>
+                <Stack.Screen name="Success" component={Success} options={{ title: "Success"}}/>
                 <Stack.Screen name="TEMPLATE COPY ME" component={TemplateCopyMe} options={{ title: "Template copy me"}}/>
             </Stack.Navigator>
       </NavigationContainer>
