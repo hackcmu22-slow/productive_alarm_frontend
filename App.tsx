@@ -10,6 +10,7 @@ import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+import TakePictureScreen from "./src/screens/TakePictureScreen"
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -50,6 +51,11 @@ export default function App() {
             name="Success"
             component={Success}
             options={{ title: "Success"}}
+          />
+          <Stack.Screen 
+            name="TakePictureScreen"
+            component={TakePictureScreen}
+            options={{ title: "TakePictureScreen"}}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"

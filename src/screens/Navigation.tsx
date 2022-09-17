@@ -26,7 +26,7 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
-                    onPress={() => navigation.navigate('Alarm')}
+                    onPress={() => navigation.navigate('Alarms')}
                 >
                 Alarm
                 </CustomButton>
@@ -36,6 +36,13 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                     onPress={() => navigation.navigate('Success')}
                 >
                 Success
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('TakePictureScreen')}
+                >
+                Take Picture
                 </CustomButton>
                 <CustomButton
                     mode="outlined"
