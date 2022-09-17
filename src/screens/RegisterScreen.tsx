@@ -31,7 +31,6 @@ const Register: React.FC = () => {
           const newUserProfile: UserProfileData = {
             email: userCredential.user.email!,
             name: name,
-            birthday: null,
             numberOfCoins: 0,
             dailyStreak: 0,
           };

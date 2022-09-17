@@ -1,4 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { SafeAreaView } from "react-native";
 import { createUserWithEmailAndPassword} from "firebase/auth";
 
 import React from 'react';
@@ -13,9 +14,6 @@ import { ScrollView } from "../components/Themed";
 import Colors from "../constants/Colors";
 import { firebaseAuth } from "../firebase/firebase";
 import useColorScheme from "../hooks/useColorScheme";
-import Register from "./RegisterScreen";
-
-const Stack = createNativeStackNavigator();
 
 const Login: React.FC = ({ navigation }: any) => {
   const colorScheme = useColorScheme();
@@ -47,69 +45,71 @@ const Login: React.FC = ({ navigation }: any) => {
       });
   };
   return (
-    <ScrollView style={{ flex: 1 }}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 40,
-          marginTop: "10%",
-        }}
-      >
-        <Image
-          style={{ height: 260, width: 260 }}
-          source={require("../assets/images/productive_alarm_logo.png")}
-        />
-      </View>
-      <View
-        style={{
-          flex: 0.3,
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: 36,
-        }}
-      >
-        <CustomTextInput label="Email" onChangeText={setEmail} value={email} />
-        <CustomTextInput
-          label="Password"
-          onChangeText={setPassword}
-          secureTextEntry={true}
-          value={password}
-        />
-      </View>
-      <View
-        style={{
-          flex: 0.3,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <CustomButton
-          mode="contained"
-          style={[styles.button, { marginBottom: 12 }]}
-          onPress={handleLogin}
+    <SafeAreaView>
+      <ScrollView style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 40,
+            marginTop: "10%",
+          }}
         >
-          SIGN IN
-        </CustomButton>
-        <CustomButton
-          mode="outlined"
-          color={Colors[colorScheme].tint}
-          style={styles.button}
-          onPress={navigation.navigate("Register")}
+          <Image
+            style={{ height: 260, width: 260 }}
+            source={require("../assets/images/productive_alarm_logo.png")}
+          />
+        </View>
+        <View
+          style={{
+            flex: 0.3,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 36,
+          }}
         >
-          SIGN UP
-        </CustomButton>
-      </View>
-      <CustomSnackBar
-        visible={snackIsVisible}
-        onDismiss={() => {
-          setSnackIsVisible(false);
-        }}
-        type="error"
-        message={snackMessage}
-      ></CustomSnackBar>
-    </ScrollView>
+          <CustomTextInput label="Email" onChangeText={setEmail} value={email} />
+          <CustomTextInput
+            label="Password"
+            onChangeText={setPassword}
+            secureTextEntry={true}
+            value={password}
+          />
+        </View>
+        <View
+          style={{
+            flex: 0.3,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <CustomButton
+            mode="contained"
+            style={[styles.button, { marginBottom: 12 }]}
+            onPress={handleLogin}
+          >
+            SIGN IN
+          </CustomButton>
+          <CustomButton
+            mode="outlined"
+            color={Colors[colorScheme].tint}
+            style={styles.button}
+            onPress={() => navigation.navigate("Register")}
+          >
+            SIGN UP
+          </CustomButton>
+        </View>
+        <CustomSnackBar
+          visible={snackIsVisible}
+          onDismiss={() => {
+            setSnackIsVisible(false);
+          }}
+          type="error"
+          message={snackMessage}
+        ></CustomSnackBar>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
