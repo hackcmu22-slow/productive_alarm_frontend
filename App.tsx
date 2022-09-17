@@ -8,6 +8,7 @@ import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import { RootStackParamList } from "./src/screenTypes";
 import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
+import Navigation from "./src/screens/Navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -16,14 +17,10 @@ export default function App() {
   return (
     <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ title: "Login" }}
-          />
-
+        <Stack.Navigator initialRouteName="Navigation">
+                <Stack.Screen name="Navigation" component={Navigation} options={{ title: "Navigation"}}/>
+                <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
                 <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
-        <Stack.Navigator>
           <Stack.Screen
             name="Alarms"
             component={AlarmList}
