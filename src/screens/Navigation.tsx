@@ -18,9 +18,9 @@ const Navigation: React.FC = ({ navigation }: any) => {
         <CustomButton
             mode="outlined"
             style={styles.button}
-            onPress={() => navigation.navigate('RegisterScreen')}
+            onPress={() => navigation.navigate('Register')}
         >
-        RegisterScreen
+        Register
         </CustomButton>
         <CustomButton
             mode="outlined"
