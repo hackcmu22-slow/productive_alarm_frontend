@@ -11,6 +11,7 @@ export type RootStackParamList = {
     | undefined
     | (AlarmEditMode & { hour: number; minute: number; name: string });
   AlarmEdit: AlarmEditMode;
+  AlarmRinging: undefined;
   Success: undefined;
   TakePictureScreen: undefined;
   "TEMPLATE COPY ME": undefined;

@@ -33,6 +33,13 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+                    onPress={() => navigation.navigate('AlarmRinging')}
+                >
+                Alarm Ringing
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
                     onPress={() => navigation.navigate('Success')}
                 >
                 Success
