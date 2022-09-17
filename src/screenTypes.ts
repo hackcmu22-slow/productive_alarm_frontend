@@ -14,6 +14,10 @@ export type RootStackParamList = {
   AlarmRinging: undefined;
   Success: undefined;
   TakePictureScreen: undefined;
+<<<<<<< HEAD
+  CameraScreen: undefined;
+=======
+>>>>>>> master
   "TEMPLATE COPY ME": undefined;
 };
 
