@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AlarmInfo } from "./components/AlarmListing";
+import { AlarmInfo } from "./store/alarms";
 
 type AlarmEditMode =
   | { mode: "create" }
