@@ -22,5 +22,10 @@ export type RootStackParamList = {
   "TEMPLATE COPY ME": undefined;
 };
 
+export type RootTabParamList = {
+  Dashboard: undefined;
+  AlarmList: undefined;
+};
+
 export type ScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;

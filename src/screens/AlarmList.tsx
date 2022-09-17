@@ -103,7 +103,7 @@ function reducer(state: Alarms, action: AlarmReducerAction): Alarms {
   }
 }
 
-const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
+const AlarmList = (props: ScreenProps<"Alarms">) => {
   const [isFABExtended, setIsFABExtended] = React.useState(false);
 
   const [alarms, dispatch] = React.useReducer(reducer, {});
