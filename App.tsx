@@ -14,7 +14,7 @@ export default function App() {
       <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
-                <Stack.Screen name="RegisterScreen" component={Register} options={{ title: "Register"}}/>
+                <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
                 <Stack.Screen name="Alarm" component={AlarmList} options={{ title: "Alarm"}}/>
                 <Stack.Screen name="TEMPLATE COPY ME" component={TemplateCopyMe} options={{ title: "Template copy me"}}/>
             </Stack.Navigator>
