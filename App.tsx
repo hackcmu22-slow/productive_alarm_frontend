@@ -10,8 +10,12 @@ import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+<<<<<<< HEAD
 import TakePictureScreen from "./src/screens/TakePictureScreen";
 import CameraScreen from "./src/screens/CameraScreen";
+=======
+import TakePictureScreen from "./src/screens/TakePictureScreen"
+>>>>>>> master
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -58,11 +62,14 @@ export default function App() {
             component={TakePictureScreen}
             options={{ title: "TakePictureScreen"}}
           />
+<<<<<<< HEAD
           <Stack.Screen 
             name="CameraScreen"
             component={CameraScreen}
             options={{ title: "CameraScreen"}}
           />
+=======
+>>>>>>> master
           <Stack.Screen
             name="TEMPLATE COPY ME"
             component={TemplateCopyMe}

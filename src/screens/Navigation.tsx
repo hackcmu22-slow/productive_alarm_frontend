@@ -47,6 +47,7 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+<<<<<<< HEAD
                     onPress={() => navigation.navigate('CameraScreen')}
                 >
                 Camera Screen
@@ -54,6 +55,8 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+=======
+>>>>>>> master
                     onPress={() => navigation.navigate('TEMPLATE COPY ME')}
                 >
                 TEMPLATE COPY ME
