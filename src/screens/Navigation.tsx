@@ -4,51 +4,6 @@ import { Text } from "react-native-paper";
 import CustomButton from "../components/CustomButton";
 import { ScreenProps } from "../screenTypes";
 
-<<<<<<< HEAD
-const Navigation: React.FC<ScreenProps<"Navigation">> = ({
-  navigation,
-}: ScreenProps<"Navigation">) => {
-  return (
-    <ScrollView>
-      <Text>Navigation Page</Text>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Login")}
-      >
-        Login
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Register")}
-      >
-        Register
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Alarms")}
-      >
-        Alarm
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("TakePictureScreen")}
-      >
-        TakePictureScreen
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("TEMPLATE COPY ME")}
-      >
-        TEMPLATE COPY ME
-      </CustomButton>
-    </ScrollView>
-  );
-=======
 const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenProps<"Navigation">) => {
     return (
         <SafeAreaView style={styles.container}>
@@ -85,6 +40,13 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+                    onPress={() => navigation.navigate('TakePictureScreen')}
+                >
+                Success
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
                     onPress={() => navigation.navigate('TEMPLATE COPY ME')}
                 >
                 TEMPLATE COPY ME
@@ -92,7 +54,6 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
             </ScrollView>
         </SafeAreaView>
     );
->>>>>>> master
 };
 
 // Standardized template for card
