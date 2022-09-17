@@ -52,15 +52,16 @@ export default function App() {
             component={Success}
             options={{ title: "Success"}}
           />
+          <Stack.Screen 
+            name="Wait" component={Wait} 
+            options={{ title: "Wait"}}
+          />
           <Stack.Screen
             name="TEMPLATE COPY ME"
             component={TemplateCopyMe}
             options={{ title: "Template copy me" }}
           />
-          <Stack.Screen 
-            name="Wait" component={Wait} 
-            options={{ title: "Wait"}}
-          />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
