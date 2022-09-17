@@ -47,16 +47,28 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenP
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+<<<<<<< HEAD
+                    onPress={() => navigation.navigate('Wait')}
+                >
+                Wait
+=======
                     onPress={() => navigation.navigate('TakePictureScreen')}
                 >
                 Take Picture
+>>>>>>> master
                 </CustomButton>
                 <CustomButton
                     mode="outlined"
                     style={styles.button}
+<<<<<<< HEAD
+                    onPress={() => navigation.navigate('Dashboard')}
+                >
+                Dashboard
+=======
                     onPress={() => navigation.navigate('CameraScreen')}
                 >
                 Camera Screen
+>>>>>>> master
                 </CustomButton>
                 <CustomButton
                     mode="outlined"
