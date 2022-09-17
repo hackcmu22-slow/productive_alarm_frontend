@@ -35,6 +35,13 @@ const Navigation: React.FC<ScreenProps<"Navigation">> = ({
       <CustomButton
         mode="outlined"
         style={styles.button}
+        onPress={() => navigation.navigate("TakePictureScreen")}
+      >
+        TakePictureScreen
+      </CustomButton>
+      <CustomButton
+        mode="outlined"
+        style={styles.button}
         onPress={() => navigation.navigate("TEMPLATE COPY ME")}
       >
         TEMPLATE COPY ME
