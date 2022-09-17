@@ -13,12 +13,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export interface AlarmListingProps {
+export interface AlarmInfo {
   name: string;
   hour: number; // 24 hour
   minute: number;
   enabled: boolean;
+}
+
+export interface AlarmListingProps extends AlarmInfo {
   onEnabledChange: (newState: boolean) => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }
 
 const AlarmListing: React.FC<AlarmListingProps> = (
@@ -44,9 +49,16 @@ const AlarmListing: React.FC<AlarmListingProps> = (
         </View>
       </Card.Content>
       <Card.Actions>
-        <IconButton icon="pencil" mode="contained-tonal" />
-        <IconButton icon="delete" mode="contained-tonal" />
-        <IconButton icon="content-copy" mode="contained-tonal" />
+        <IconButton
+          icon="pencil"
+          mode="contained-tonal"
+          onPress={props.onEdit}
+        />
+        <IconButton
+          icon="delete"
+          mode="contained-tonal"
+          onPress={props.onDelete}
+        />
       </Card.Actions>
     </Card>
   );
