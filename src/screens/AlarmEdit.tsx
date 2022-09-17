@@ -6,6 +6,8 @@ import { TextInput as DefaultTextInput } from "react-native";
 import { ScreenProps } from "../screenTypes";
 import { Audio } from "expo-av";
 import withAlarmFiring from "../components/withAlarmFiring";
+import SoundContext, { PlayState } from "../components/SoundContext";
+import { PlaybackMixin } from "expo-av/build/AV";
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: 45,
   },
   timeText: {
-    fontSize: 50,
+    fontSize: 40,
     color: "#97f",
   },
   numberInput: {
@@ -63,8 +65,7 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
   const [minuteText, setMinuteText] = React.useState("00");
 
   const [name, setName] = React.useState("");
-
-  const [sound, setSound] = React.useState<Audio.Sound | null>(null);
+  const [playState, setPlayState] = React.useContext(SoundContext);
 
   React.useEffect(() => {
     if (props.route.params.mode === "update") {
@@ -124,18 +125,9 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
     });
   };
 
-  const handlePreviewSound = async () => {
-    if (sound) {
-      setSound(null);
-      await sound.stopAsync();
-    } else {
-      const { sound: loadedSound } = await Audio.Sound.createAsync(
-        require("../assets/alarm1.mp3")
-      );
-      setSound(loadedSound);
-      await loadedSound.setVolumeAsync(1.0);
-      await loadedSound.playAsync();
-    }
+  const handlePreviewSound = () => {
+    if (playState === PlayState.PAUSED) setPlayState(PlayState.PLAY_ONCE);
+    else setPlayState(PlayState.PAUSED);
   };
 
   return (
@@ -167,7 +159,7 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
         <TextInput label="Alarm Name" value={name} onChangeText={setName} />
         <View style={styles.previewSoundButtonContainer}>
           <Button mode="contained" onPress={handlePreviewSound}>
-            {sound ? "Stop Preview" : "Preview Sound"}
+            {playState === PlayState.PAUSED ? "Preview Sound" : "Stop Preview"}
           </Button>
         </View>
       </ScrollView>
