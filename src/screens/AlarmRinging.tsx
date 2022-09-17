@@ -35,16 +35,9 @@ const AlarmRinging = (props: ScreenProps<"AlarmRinging">): JSX.Element => {
           mode="contained"
           color={Colors[colorScheme].tint}
           style={styles.button}
-          onPress={() => props.navigation.navigate("Alarms")}
-        >
-          Snooze
-        </CustomButton>
-        <CustomButton
-          mode="outlined"
-          style={styles.button}
           onPress={() => props.navigation.navigate("TakePictureScreen")}
         >
-          Ready
+          Continue
         </CustomButton>
       </ScrollView>
     </SafeAreaView>
