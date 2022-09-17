@@ -10,7 +10,7 @@ import { RootStackParamList } from "./src/screenTypes";
 import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
-import Success from "./src/screens/Success";
+import Success from "./src/screens/Success"
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,6 +36,11 @@ export default function App() {
             options={{ title: "Register" }}
           />
           <Stack.Screen
+            name="TakePictureScreen"
+            component={TakePictureScreen}
+            options={{ title: "TakePictureScreen" }}
+          />
+          <Stack.Screen
             name="Alarms"
             component={AlarmList}
             options={{ title: "Alarms" }}
@@ -47,16 +52,22 @@ export default function App() {
               title: capitalize(route.params.mode) + " Alarm",
             })}
           />
-          <Stack.Screen 
+          <Stack.Screen
             name="Success"
             component={Success}
-            options={{ title: "Success"}}
+            options={{ title: "Alarms" }}
+          />
+          <Stack.Screen
+            name="TakePictureScreen"
+            component={TakePictureScreen}
+            options={{ title: "TakePictureScreen" }}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"
             component={TemplateCopyMe}
             options={{ title: "Template copy me" }}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
