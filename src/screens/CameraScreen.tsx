@@ -5,12 +5,21 @@ import * as FS from "expo-file-system";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
+import { ImageType } from 'expo-camera/build/Camera.types';
+import axios from 'axios';
+import CustomSnackBar from '../components/CustomSnackBar';
+import SoundContext, { PlayState } from '../components/SoundContext';
 
 
 const CameraScreen: React.FC = ({ navigation }: any) => {
     const [camera, setCamera] = useState<Camera|null>(null)
     const [hasPermission, setHasPermission] = useState(false);
     const [type, setType] = useState(CameraType.back);
+
+    const [snackIsVisible, setSnackIsVisible] = useState<boolean>(false);
+    const [snackMessage, setSnackMessage] = useState<string>("");
+
+    const [_, setPlayState] = React.useContext(SoundContext);
 
     useEffect(() => {
         (async () => {
@@ -27,42 +36,37 @@ const CameraScreen: React.FC = ({ navigation }: any) => {
         return <Text>No access to camera</Text>;
     }
 
-    const toServer = async (mediaFile : any) => {
-        let type = mediaFile.type;
-        let schema = "http://";
-        let host = "localhost";
-        let route = "";
-        let port = "5000";
-        let url = "";
-        let content_type = "";
-        type === "image"
-          ? ((route = "/image"), (content_type = "image/jpeg"))
-          : ((route = "/video"), (content_type = "video/mp4"));
-        url = schema + host + ":" + port + route;
-    
-        let response = await FS.uploadAsync(url, mediaFile.uri, {
-          headers: {
-            "content-type": content_type,
-          },
-          httpMethod: "POST",
-          uploadType: FS.FileSystemUploadType.BINARY_CONTENT,
-        });
-    
-        console.log(response.headers);
-        console.log(response.body);
-    };
-    
     // Taking the picture
     const takePicture = async () => {
         if (!camera) return
-        const photo = await camera.takePictureAsync()
-        console.log("photo")
-        console.log(photo)
-        navigation.navigate("Success")
-        // await toServer({
-        //     type: "image",
-        //     uri: photo.uri,
-        // });
+        const photo = await camera.takePictureAsync({
+            imageType: ImageType.png
+        });
+        const imgData = await FS.readAsStringAsync(photo.uri, {
+            encoding: FS.EncodingType.Base64
+        });
+        console.log("imgData");
+        console.log(photo.width);
+        console.log(photo.height);
+        console.log(imgData.length);
+        try {
+            const response = await axios.post("http://172.26.69.11:5000/submit", {
+                imgData
+            });
+
+            if (response.data.result) {
+                setPlayState(PlayState.PAUSED);
+                navigation.replace("Success")
+                return;
+            }
+        } catch (err) {
+            console.log("error");
+            console.log(err);
+        }
+
+        console.log("No person found.");
+        setSnackMessage("No person found.");
+        setSnackIsVisible(true);
     }
 
     return (
@@ -83,6 +87,14 @@ const CameraScreen: React.FC = ({ navigation }: any) => {
                     />
                 </View>
             </Camera>
+      <CustomSnackBar
+        visible={snackIsVisible}
+        onDismiss={() => {
+          setSnackIsVisible(false);
+        }}
+        type="error"
+        message={snackMessage}
+      ></CustomSnackBar>
         </View>
     );
 }
