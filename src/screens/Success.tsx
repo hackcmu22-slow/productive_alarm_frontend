@@ -1,11 +1,23 @@
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Image } from "react-native";
 import { Text } from "react-native-paper";
+import CustomButton from "../components/CustomButton";
 
-const Success: React.FC = () => {
+const Success: React.FC = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
+        <Image
+          style={styles.image}
+          source={require("../assets/images/success_img.png")}
+        />
         <Text style={styles.title}>Congratulations! You are fully awake!</Text>
+        <CustomButton
+            mode="outlined"
+            style={styles.button}
+            onPress={() => navigation.navigate('Alarm')}
+        >
+        Return
+        </CustomButton>
       </ScrollView>
     </SafeAreaView>
   );
@@ -20,9 +32,21 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    image: {
+        height: 260,
+        width: 260,
+        marginTop: 100,
+        marginLeft: 50,
+    },
     title: {
         marginTop: 24,
         fontSize: 20,
         fontWeight: "bold",
+        color: "green",
+    },
+    button: {
+        width: 160,
+        marginTop: 20,
+        marginLeft: 100,
     },
 });
