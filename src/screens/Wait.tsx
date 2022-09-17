@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    marginTop: "70%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   title: {
-    marginTop: 24,
+    marginTop: "70%",
     fontSize: 20,
     fontWeight: "bold",
   },
@@ -35,7 +36,7 @@ const Wait: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <ActivityIndicator animating={true} color={MD2Colors.red800} />
+      <ActivityIndicator size="large" animating={true} color={"#00ff00"} />
       </ScrollView>
     </SafeAreaView>
   );

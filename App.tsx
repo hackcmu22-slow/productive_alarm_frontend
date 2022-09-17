@@ -11,6 +11,7 @@ import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
 import Wait from "./src/screens/Wait";
+import Dashboard from "./src/screens/Dashboard";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -56,6 +57,11 @@ export default function App() {
             name="Wait" 
             component={Wait} 
             options={{ title: "Wait"}}
+          />
+          <Stack.Screen 
+            name="Dashboard" 
+            component={Dashboard} 
+            options={{ title: "Dashboard"}}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"
