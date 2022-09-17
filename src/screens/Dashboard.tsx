@@ -1,53 +1,109 @@
-import { SafeAreaView, ScrollView, StyleSheet,View,TouchableOpacity } from "react-native";
-import { Text } from "react-native-paper";
+import { SafeAreaView, ScrollView, StyleSheet,View,ImageBackground } from "react-native";
+import { Card, Text } from "react-native-paper";
 import React, {useState} from "react"
+import CustomButton from "../components/CustomButton";
+import { ScreenProps } from "../screenTypes";
+
 
 
 const FlexDirectionBasics = () => {
-  const [Point, setPoint] = useState(0);
-  const [Streak, setStreak] = useState(1);
+  const [Point, setPoint] = useState(120);
+  const [Streak, setStreak] = useState(5);
+  const [TotalStreak, setTotalStreak] = useState(10);
+  const [Succeed, setSucceed] =useState("gold");
+  const friend = require('../assets/images/refer_a_friend.png' );
+  const image =require("../assets/images/gift.png");
+
   return (
-    <>
-      <Text style={styles.label}>Coins Collected: {Point}</Text>
+        <SafeAreaView style={styles.container}>
+      <ScrollView>
       <View style={styles.container}>
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
-      <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-      />
+        <Text style={styles.bigTitle}> Your Statistics:</Text>
+        </View>
+        <Card style={[styles.card, {backgroundColor:"#acf5e0"}]}>
+        <Text style={styles.label}>Total Streak: {TotalStreak} 🔥 </Text>
+        <View style={styles.container2}>
+      <Text style={[styles.circle, { backgroundColor: (Streak >=1) ? Succeed:"silver" }]}
+      >Mon</Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=2) ? Succeed:"silver" }]}>
+            Tue</Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=3) ? Succeed:"silver" }]}
+      >
+        Wed
+        </Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=4) ? Succeed:"silver" }]}
+      > Thur </Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=5) ? Succeed:"silver" }]}
+      >
+        Fri</Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=6) ? Succeed:"silver" }]}
+      >Sat</Text>
+      <Text
+          style={[styles.circle, { backgroundColor: (Streak >=7) ? Succeed:"silver" }]}
+      >Sun </Text>
       </View>
-    </>
+        </Card>
+      {/* Card for the streaks */}
+      <Card style={[styles.card, {backgroundColor: "#ace4f5"}]}>
+        <Text style={styles.label}>Coins Collected: {Point}🪙 </Text>
+      </Card>
+      <Card style={[styles.card, {backgroundColor: "#d9f2af"}]}>
+      <Text style={styles.text}>Claim Rewards! </Text>
+        <ImageBackground source={image} resizeMode="cover" style={styles.giftImage}>
+    </ImageBackground>
+
+          </Card>
+
+    <Card style={styles.card}>
+      <Text style={styles.text}>Share With Friends 😄 </Text>
+        <ImageBackground source={friend} resizeMode="cover" style={styles.friendsImage}>
+    </ImageBackground>
+          </Card>
+
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 
 
 const styles = StyleSheet.create({
+  text: {
+    fontSize: 32,
+    lineHeight: 34,
+    fontWeight: "bold",
+    textAlign: "left",
+  },
   container: {
-    flex: 1,
-    marginTop: 8,
+    flex: 3,
+    marginTop: 18,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#fef3bd",
+  },
+  container2: {
+    paddingVertical: 26,
+    flex: 3,
+    marginTop: 18,
     flexDirection: "row",
     justifyContent: "space-around",
   },
   box: {
     width: 50,
     height: 50,
+  },
+  card: {
+    width: "100%",
+    borderRadius: 20,
+    marginTop: 20,
+    padding: 20,
+    textAlign: "center",
+    backgroundColor: "#dfc4fb",
   },
   row: {
     flexDirection: "row",
@@ -56,12 +112,12 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 8,
     paddingVertical: 6,
-    borderRadius: 4,
+    borderRadius: 40,
     backgroundColor: "oldlace",
     alignSelf: "flex-start",
     marginHorizontal: "1%",
     marginBottom: 6,
-    minWidth: "48%",
+    minWidth: "100%",
     textAlign: "center",
   },
   selected: {
@@ -77,54 +133,38 @@ const styles = StyleSheet.create({
     color: "white",
   },
   label: {
-    textAlign: "center",
+    textAlign: "left",
     marginBottom: 10,
-    fontSize: 24,
+    fontSize: 30,
+    fontWeight: "bold",
   },
   circle: {
     width: 40,
     height: 40,
-    borderRadius: 20,
-    
-  }
+    borderRadius: 10000,
+    textAlign: "center",
+    alignSelf: "flex-start",
+    paddingVertical: 8,
+  },
+  bigTitle: {
+    color: '#6a86ed',
+    fontWeight: 'bold',
+    fontFamily: "Arial",
+    fontSize: 40,
+    alignText: "left",
+  },
+  friendsImage: {
+    height: 120,
+    width: 260,
+    marginTop: 10,
+    marginLeft: 0,  
+  },
+  giftImage: {
+    height: 420,
+    width: 430,
+    marginTop: 30,
+    marginLeft: -40,  
+  },
 });
 
 export default FlexDirectionBasics;
-const backup: React.FC = () => {
-  const [Points, setPoints] = useState(0);
-  const [Streak, setStreak] = useState(2);
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-
-        <Text style={[styles.title, { backgroundColor: "powderblue" }]}>Coins Collected: {Points}</Text>
-
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
-        <View
-          style={[styles.circle, { backgroundColor: "skyblue" }]}
-        />
- 
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-
-

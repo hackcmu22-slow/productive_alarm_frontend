@@ -29,6 +29,7 @@ const Login: React.FC = ({ navigation }: any) => {
     signInWithEmailAndPassword(firebaseAuth, email.trim(), password)
       .then((userCredential) => {
         const user = userCredential.user;
+        navigation.navigate("Dashboard")
         console.log(user.email, "successfully signed in!");
       })
       .catch((error: any) => {
@@ -58,7 +59,7 @@ const Login: React.FC = ({ navigation }: any) => {
         }}
       >
         <Image
-          style={{ height: 260, width: 400 }}
+          style={{ height: 230, width: 300 }}
           source={require("../assets/images/productive_alarm_logo.png")}
         />
       </View>
