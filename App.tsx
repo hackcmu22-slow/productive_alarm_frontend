@@ -8,9 +8,12 @@ import AlarmList from "./src/screens/AlarmList";
 import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import { RootStackParamList } from "./src/screenTypes";
 import AlarmEdit from "./src/screens/AlarmEdit";
+import AlarmRinging from "./src/screens/AlarmRinging";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+import Wait from "./src/screens/Wait";
+import Dashboard from "./src/screens/Dashboard";
 import TakePictureScreen from "./src/screens/TakePictureScreen";
 import CameraScreen from "./src/screens/CameraScreen";
 
@@ -49,10 +52,25 @@ export default function App() {
               title: capitalize(route.params.mode) + " Alarm",
             })}
           />
+          <Stack.Screen
+            name="AlarmRinging"
+            component={AlarmRinging}
+            options={{ title: "AlarmRinging"}}
+          />
           <Stack.Screen 
             name="Success"
             component={Success}
             options={{ title: "Success"}}
+          />
+          <Stack.Screen 
+            name="Wait" 
+            component={Wait} 
+            options={{ title: "Wait"}}
+          />
+          <Stack.Screen 
+            name="Dashboard" 
+            component={Dashboard} 
+            options={{ title: "Dashboard"}}
           />
           <Stack.Screen 
             name="TakePictureScreen"
@@ -69,7 +87,9 @@ export default function App() {
             component={TemplateCopyMe}
             options={{ title: "Template copy me" }}
           />
+          
         </Stack.Navigator>
+
       </NavigationContainer>
     </PaperProvider>
   );
