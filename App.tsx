@@ -11,6 +11,8 @@ import AlarmRinging from "./src/screens/AlarmRinging";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+import Wait from "./src/screens/Wait";
+import Dashboard from "./src/screens/Dashboard";
 import TakePictureScreen from "./src/screens/TakePictureScreen";
 import CameraScreen from "./src/screens/CameraScreen";
 
@@ -60,6 +62,16 @@ export default function App() {
             options={{ title: "Success"}}
           />
           <Stack.Screen 
+            name="Wait" 
+            component={Wait} 
+            options={{ title: "Wait"}}
+          />
+          <Stack.Screen 
+            name="Dashboard" 
+            component={Dashboard} 
+            options={{ title: "Dashboard"}}
+          />
+          <Stack.Screen 
             name="TakePictureScreen"
             component={TakePictureScreen}
             options={{ title: "TakePictureScreen"}}
@@ -74,7 +86,9 @@ export default function App() {
             component={TemplateCopyMe}
             options={{ title: "Template copy me" }}
           />
+          
         </Stack.Navigator>
+
       </NavigationContainer>
     </PaperProvider>
   );
