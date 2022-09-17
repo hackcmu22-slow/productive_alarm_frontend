@@ -1,17 +1,6 @@
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
-
-const TemplateCopyMe: React.FC = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Text>Hello hello</Text>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
-export default TemplateCopyMe;
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 // Standardized template for card
 const styles = StyleSheet.create({
@@ -42,3 +31,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+const Wait: React.FC = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+      <ActivityIndicator animating={true} color={MD2Colors.red800} />
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default Wait;
+
