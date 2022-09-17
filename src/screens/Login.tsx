@@ -96,7 +96,7 @@ const Login: React.FC = ({ navigation }: any) => {
           mode="outlined"
           color={Colors[colorScheme].tint}
           style={styles.button}
-          onPress={handleLogin}
+          onPress={navigation.navigate("RegisterScreen")}
         >
           SIGN UP
         </CustomButton>
