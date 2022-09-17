@@ -3,48 +3,44 @@ import { Text } from "react-native-paper";
 import { StyleSheet } from "react-native";
 
 import CustomButton from "../components/CustomButton";
+import { ScreenProps } from "../screenTypes";
 
-const Navigation: React.FC = ({ navigation }: any) => {
-    return (
+const Navigation: React.FC<ScreenProps<"Navigation">> = ({
+  navigation,
+}: ScreenProps<"Navigation">) => {
+  return (
     <ScrollView>
-        <Text>Navigation Page</Text>
-        <CustomButton
-            mode="outlined"
-            style={styles.button}
-            onPress={() => navigation.navigate('Login')}
-        >
+      <Text>Navigation Page</Text>
+      <CustomButton
+        mode="outlined"
+        style={styles.button}
+        onPress={() => navigation.navigate("Login")}
+      >
         Login
-        </CustomButton>
-        <CustomButton
-            mode="outlined"
-            style={styles.button}
-            onPress={() => navigation.navigate('Register')}
-        >
+      </CustomButton>
+      <CustomButton
+        mode="outlined"
+        style={styles.button}
+        onPress={() => navigation.navigate("Register")}
+      >
         Register
-        </CustomButton>
-        <CustomButton
-            mode="outlined"
-            style={styles.button}
-            onPress={() => navigation.navigate('Alarm')}
-        >
+      </CustomButton>
+      <CustomButton
+        mode="outlined"
+        style={styles.button}
+        onPress={() => navigation.navigate("Alarms")}
+      >
         Alarm
-        </CustomButton>
-        <CustomButton
-            mode="outlined"
-            style={styles.button}
-            onPress={() => navigation.navigate('TakePictureScreen')}
-        >
-        Take Picture Screen
-        </CustomButton>
-        <CustomButton
-            mode="outlined"
-            style={styles.button}
-            onPress={() => navigation.navigate('TEMPLATE COPY ME')}
-        >
+      </CustomButton>
+      <CustomButton
+        mode="outlined"
+        style={styles.button}
+        onPress={() => navigation.navigate("TEMPLATE COPY ME")}
+      >
         TEMPLATE COPY ME
-        </CustomButton>
+      </CustomButton>
     </ScrollView>
-    );
+  );
 };
 
 // Standardized template for card
