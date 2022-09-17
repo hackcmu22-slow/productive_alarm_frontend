@@ -8,7 +8,9 @@ import {
   View,
 } from "react-native";
 import { AnimatedFAB, Text } from "react-native-paper";
-import AlarmListing, { AlarmInfo } from "../components/AlarmListing";
+import AlarmListContext from "../components/AlarmListContext";
+import AlarmListing  from "../components/AlarmListing";
+import withAlarmFiring from "../components/withAlarmFiring";
 import { ScreenProps } from "../screenTypes";
 
 const styles = StyleSheet.create({
@@ -36,77 +38,11 @@ const styles = StyleSheet.create({
 
 interface AlarmListProps extends ScreenProps<"Alarms"> {}
 
-interface AlarmCReducerAction {
-  type: "create";
-  payload: {
-    hour: number;
-    minute: number;
-    name: string;
-  };
-}
-
-interface AlarmUReducerAction {
-  type: "update";
-  payload: {
-    id: string;
-    hour: number;
-    minute: number;
-    name: string;
-  };
-}
-
-interface AlarmDReducerAction {
-  type: "delete";
-  payload: {
-    id: string;
-  };
-}
-
-interface AlarmEnableReducerAction {
-  type: "enable";
-  payload: {
-    id: string;
-    state: boolean;
-  };
-}
-
-type Alarms = Record<string, AlarmInfo>;
-export type AlarmReducerAction =
-  | AlarmCReducerAction
-  | AlarmUReducerAction
-  | AlarmDReducerAction
-  | AlarmEnableReducerAction;
-
-function reducer(state: Alarms, action: AlarmReducerAction): Alarms {
-  switch (action.type) {
-    case "delete": {
-      const newState = { ...state };
-      delete newState[action.payload.id];
-      return newState;
-    }
-    case "create": {
-      const id = Date().toString();
-      return { ...state, [id]: { ...action.payload, enabled: true } };
-    }
-    case "update": {
-      const { id, ...others } = action.payload;
-      return { ...state, [id]: { ...others, enabled: true } };
-    }
-    case "enable": {
-      const newState = { ...state };
-      const targetState = { ...newState[action.payload.id] };
-      return {
-        ...newState,
-        [action.payload.id]: { ...targetState, enabled: action.payload.state },
-      };
-    }
-  }
-}
 
 const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
   const [isFABExtended, setIsFABExtended] = React.useState(false);
 
-  const [alarms, dispatch] = React.useReducer(reducer, {});
+  const [alarms, dispatch] = React.useContext(AlarmListContext);
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const currentScrollPosition =
@@ -149,7 +85,7 @@ const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
 
   return (
     <SafeAreaView style={styles.outerContainer}>
-      <ScrollView onScroll={onScroll} style={styles.container}>
+      <ScrollView onScroll={onScroll} style={styles.container} scrollEventThrottle={20}>
         {listOfAlarms.length === 0 && (
           <View style={styles.noAlarmsText}>
             <Text variant="bodyLarge">You don't have any alarms yet.</Text>
@@ -190,4 +126,4 @@ const AlarmList: React.FC<AlarmListProps> = (props: AlarmListProps) => {
   );
 };
 
-export default AlarmList;
+export default withAlarmFiring(AlarmList);

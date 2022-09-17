@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AlarmInfo } from "./components/AlarmListing";
+import { AlarmInfo } from "./store/alarms";
 
 type AlarmEditMode =
   | { mode: "create" }
@@ -13,7 +13,7 @@ export type RootStackParamList = {
     | undefined
     | (AlarmEditMode & { hour: number; minute: number; name: string });
   AlarmEdit: AlarmEditMode;
-  AlarmRinging: undefined;
+  AlarmRinging: AlarmInfo;
   Success: undefined;
   TakePictureScreen: undefined;
   CameraScreen: undefined;
