@@ -3,17 +3,17 @@ import { Text } from "react-native-paper";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})
+  container: {
+    flex: 1,
+  },
+});
 
 const TemplateCopyMe: React.FC = () => {
   return (
-        <SafeAreaView style={styles.container}>
-    <ScrollView>
-      <Text>Hello hello</Text>
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Text>Hello hello</Text>
+      </ScrollView>
     </SafeAreaView>
   );
 };
