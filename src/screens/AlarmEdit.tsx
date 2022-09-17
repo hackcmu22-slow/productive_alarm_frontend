@@ -106,9 +106,9 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
   };
 
   const handleDone = () => {
-        if ((hourText?.length ?? 0) == 0 || (minuteText?.length ?? 0) == 0) return;
-        const hour = parseInt(hourText);
-        const minute = parseInt(minuteText);
+    if ((hourText?.length ?? 0) == 0 || (minuteText?.length ?? 0) == 0) return;
+    const hour = parseInt(hourText);
+    const minute = parseInt(minuteText);
     props.navigation.navigate("Alarms", {
       ...props.route.params,
       hour: (hour % 12) + (amPm == "AM" ? 0 : 12),
