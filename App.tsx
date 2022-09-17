@@ -12,6 +12,8 @@ import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
 import Wait from "./src/screens/Wait";
 import Dashboard from "./src/screens/Dashboard";
+import TakePictureScreen from "./src/screens/TakePictureScreen";
+import CameraScreen from "./src/screens/CameraScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -62,6 +64,16 @@ export default function App() {
             name="Dashboard" 
             component={Dashboard} 
             options={{ title: "Dashboard"}}
+          />
+          <Stack.Screen 
+            name="TakePictureScreen"
+            component={TakePictureScreen}
+            options={{ title: "TakePictureScreen"}}
+          />
+          <Stack.Screen 
+            name="CameraScreen"
+            component={CameraScreen}
+            options={{ title: "CameraScreen"}}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"
