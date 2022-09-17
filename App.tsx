@@ -10,6 +10,7 @@ import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+import Wait from "./src/screens/Wait";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -51,12 +52,19 @@ export default function App() {
             component={Success}
             options={{ title: "Success"}}
           />
+          <Stack.Screen 
+            name="Wait" 
+            component={Wait} 
+            options={{ title: "Wait"}}
+          />
           <Stack.Screen
             name="TEMPLATE COPY ME"
             component={TemplateCopyMe}
             options={{ title: "Template copy me" }}
           />
+          
         </Stack.Navigator>
+
       </NavigationContainer>
     </PaperProvider>
   );
