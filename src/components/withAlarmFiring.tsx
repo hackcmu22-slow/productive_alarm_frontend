@@ -18,15 +18,15 @@ function withAlarmFiring<T extends keyof RootStackParamList>(
       setTimeoutIds(
         Object.values(alarms)
           .filter(({ enabled }) => enabled)
-          .map(({ hour, minute }) => {
+          .map((alarm) => {
             let date = new Date();
-            date.setHours(hour);
-            date.setMinutes(minute);
+            date.setHours(alarm.hour);
+            date.setMinutes(alarm.minute);
             date.setSeconds(0);
             if (date < new Date()) {
               date = new Date(date.getTime() + 86400000);
             }
-            const callback = () => props.navigation.replace("AlarmRinging");
+            const callback = () => props.navigation.replace("AlarmRinging", alarm);
             return setTimeout(callback, date.getTime() - Date.now());
           })
       );
