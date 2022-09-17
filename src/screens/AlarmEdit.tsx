@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import { FAB, Text, TextInput } from "react-native-paper";
+import { Button, FAB, Text, TextInput } from "react-native-paper";
 import { AmPm } from "../utils/time";
 import { TextInput as DefaultTextInput } from "react-native";
 import { ScreenProps } from "../screenTypes";
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    paddingVertical: 15,
+    paddingVertical: 16,
     paddingHorizontal: 15,
   },
   timeElement: {
@@ -143,6 +143,7 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
           </Text>
         </View>
         <TextInput label="Alarm Name" value={name} onChangeText={setName} />
+        <Button mode="contained">Preview Sound</Button>
       </ScrollView>
       <FAB icon="check-bold" style={styles.fab} onPress={handleDone} />
     </SafeAreaView>
