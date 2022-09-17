@@ -32,6 +32,13 @@ const Navigation: React.FC = ({ navigation }: any) => {
         <CustomButton
             mode="outlined"
             style={styles.button}
+            onPress={() => navigation.navigate('TakePictureScreen')}
+        >
+        Take Picture Screen
+        </CustomButton>
+        <CustomButton
+            mode="outlined"
+            style={styles.button}
             onPress={() => navigation.navigate('TEMPLATE COPY ME')}
         >
         TEMPLATE COPY ME

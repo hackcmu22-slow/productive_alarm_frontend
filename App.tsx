@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/screens/Login";
 import Register from "./src/screens/RegisterScreen";
 import AlarmList from "./src/screens/AlarmList";
+import TakePictureScreen from "./src/screens/TakePictureScreen"
 import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import Navigation from "./src/screens/Navigation";
 
@@ -18,6 +19,7 @@ export default function App() {
                 <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
                 <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
                 <Stack.Screen name="Alarm" component={AlarmList} options={{ title: "Alarm"}}/>
+                <Stack.Screen name="TakePictureScreen" component={TakePictureScreen} options={{ title: "TakePictureScreen"}}/>
                 <Stack.Screen name="TEMPLATE COPY ME" component={TemplateCopyMe} options={{ title: "Template copy me"}}/>
             </Stack.Navigator>
       </NavigationContainer>
