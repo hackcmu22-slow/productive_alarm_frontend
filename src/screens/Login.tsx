@@ -59,7 +59,7 @@ const Login: React.FC = ({ navigation }: any) => {
       >
         <Image
           style={{ height: 260, width: 260 }}
-          source={require("../assets/images/damian.png")}
+          source={require("../assets/images/productive_alarm_logo.png")}
         />
       </View>
       <View
