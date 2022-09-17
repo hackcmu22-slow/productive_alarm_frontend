@@ -13,6 +13,7 @@ export type RootStackParamList = {
   AlarmEdit: AlarmEditMode;
   Success: undefined;
   TakePictureScreen: undefined;
+  CameraScreen: undefined;
   "TEMPLATE COPY ME": undefined;
 };
 
