@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MD3LightTheme, Provider as PaperProvider } from "react-native-paper";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, NavigationContainerRefContext } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/screens/Login";
 import Register from "./src/screens/RegisterScreen";
@@ -17,6 +17,7 @@ import Dashboard from "./src/screens/Dashboard";
 import TakePictureScreen from "./src/screens/TakePictureScreen";
 import CameraScreen from "./src/screens/CameraScreen";
 import BottomTabShifting from './src/navigation/BottomTabs';
+import { TabRouter } from 'react-navigation';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
+        <BottomTabShifting />
         <Stack.Navigator initialRouteName="Navigation">
           <Stack.Screen
             name="Navigation"
@@ -40,6 +42,11 @@ export default function App() {
             name="Register"
             component={Register}
             options={{ title: "Register" }}
+          />
+          <Stack.Screen 
+            name="Dashboard" 
+            component={Dashboard} 
+            options={{ title: "Dashboard"}}
           />
           <Stack.Screen
             name="Alarms"
@@ -67,11 +74,6 @@ export default function App() {
             name="Wait" 
             component={Wait} 
             options={{ title: "Wait"}}
-          />
-          <Stack.Screen 
-            name="Dashboard" 
-            component={Dashboard} 
-            options={{ title: "Dashboard"}}
           />
           <Stack.Screen 
             name="TakePictureScreen"
