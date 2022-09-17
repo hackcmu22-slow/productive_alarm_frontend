@@ -9,6 +9,7 @@ import { RootStackParamList } from "./src/screenTypes";
 import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
+import Success from "./src/screens/Success";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -44,6 +45,11 @@ export default function App() {
             options={({ route }) => ({
               title: capitalize(route.params.mode) + " Alarm",
             })}
+          />
+          <Stack.Screen 
+            name="Success"
+            component={Success}
+            options={{ title: "Success"}}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"

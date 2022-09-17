@@ -1,46 +1,52 @@
-import { ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
-import { StyleSheet } from "react-native";
 
 import CustomButton from "../components/CustomButton";
 import { ScreenProps } from "../screenTypes";
 
-const Navigation: React.FC<ScreenProps<"Navigation">> = ({
-  navigation,
-}: ScreenProps<"Navigation">) => {
-  return (
-    <ScrollView>
-      <Text>Navigation Page</Text>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Login")}
-      >
-        Login
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Register")}
-      >
-        Register
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("Alarms")}
-      >
-        Alarm
-      </CustomButton>
-      <CustomButton
-        mode="outlined"
-        style={styles.button}
-        onPress={() => navigation.navigate("TEMPLATE COPY ME")}
-      >
-        TEMPLATE COPY ME
-      </CustomButton>
-    </ScrollView>
-  );
+const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenProps<"Navigation">) => {
+    return (
+        <SafeAreaView style={styles.container}>
+            <ScrollView>
+                <Text>Navigation Page</Text>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Login')}
+                >
+                Login
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Register')}
+                >
+                Register
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Alarm')}
+                >
+                Alarm
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Success')}
+                >
+                Success
+                </CustomButton>
+                <CustomButton
+                    mode="outlined"
+                    style={styles.button}
+                    onPress={() => navigation.navigate('TEMPLATE COPY ME')}
+                >
+                TEMPLATE COPY ME
+                </CustomButton>
+            </ScrollView>
+        </SafeAreaView>
+    );
 };
 
 // Standardized template for card
