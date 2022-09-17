@@ -18,9 +18,21 @@ export default function App() {
     <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Navigation">
-                <Stack.Screen name="Navigation" component={Navigation} options={{ title: "Navigation"}}/>
-                <Stack.Screen name="Login" component={Login} options={{ title: "Login"}}/>
-                <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
+          <Stack.Screen
+            name="Navigation"
+            component={Navigation}
+            options={{ title: "Navigation" }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ title: "Login" }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ title: "Register" }}
+          />
           <Stack.Screen
             name="Alarms"
             component={AlarmList}
@@ -29,7 +41,9 @@ export default function App() {
           <Stack.Screen
             name="AlarmEdit"
             component={AlarmEdit}
-            options={({ route }) => ({ title: capitalize(route.params.mode) + " Alarm" })}
+            options={({ route }) => ({
+              title: capitalize(route.params.mode) + " Alarm",
+            })}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"
