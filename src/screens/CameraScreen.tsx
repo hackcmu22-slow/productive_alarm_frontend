@@ -1,52 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
-// import * as MediaLibrary from 'expo-media-library';
+import * as FS from "expo-file-system";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 
 
 const CameraScreen: React.FC = () => {
-    let camera = Camera;
-    const [hasCameraPermission, setHasCameraPermission] = useState(false)
-    const [type, setType] = useState(CameraType.back)
-    const [capturedImage, setCapturedImage] = useState(null)
-    // const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState(false);
+    const [camera, setCamera] = useState<Camera|null>(null)
+    const [hasPermission, setHasPermission] = useState(false);
+    const [type, setType] = useState(CameraType.back);
 
     useEffect(() => {
         (async () => {
-            const cameraStatus = await Camera.requestCameraPermissionsAsync();
-            setHasCameraPermission(cameraStatus.status === "granted")
-            // const mediaLibraryStatus = await MediaLibrary.requestPermissionsAsync();
-            // setHasMediaLibraryPermission(mediaLibraryStatus === "granted")
+            const { status } = await Camera.requestCameraPermissionsAsync();
+            setHasPermission(status === "granted");
         })();
     }, []);
 
-    if (hasCameraPermission === null) {
+    if (hasPermission === null) {
         return <View />;
     }
 
-    if (hasCameraPermission === false) {
+    if (hasPermission === false) {
         return <Text>No access to camera</Text>;
     }
 
-    // Taking the picture and storing in capturedImage
+    const toServer = async (mediaFile : any) => {
+        let type = mediaFile.type;
+        let schema = "http://";
+        let host = "localhost";
+        let route = "";
+        let port = "5000";
+        let url = "";
+        let content_type = "";
+        type === "image"
+          ? ((route = "/image"), (content_type = "image/jpeg"))
+          : ((route = "/video"), (content_type = "video/mp4"));
+        url = schema + host + ":" + port + route;
+    
+        let response = await FS.uploadAsync(url, mediaFile.uri, {
+          headers: {
+            "content-type": content_type,
+          },
+          httpMethod: "POST",
+          uploadType: FS.FileSystemUploadType.BINARY_CONTENT,
+        });
+    
+        console.log(response.headers);
+        console.log(response.body);
+    };
+    
+    // Taking the picture
     const takePicture = async () => {
         if (!camera) return
         const photo = await camera.takePictureAsync()
-        setCapturedImage(photo)
-      }
-    
-    // let saveVideo = () => {
-    //     MediaLibrary.saveToLibraryAsync(video.uri).then(() => {
-    //         setVideo(undefined);
-    //     });
-    // };
+        console.log("photo")
+        console.log(photo)
+
+        await toServer({
+            type: "image",
+            uri: photo.uri,
+        });
+    }
 
     return (
         <View style={styles.container}>
-            <Camera style={styles.camera} type={type} ratio="16:9">
+            <Camera style={styles.camera} ref={ref => setCamera(ref)} type={type} ratio="16:9">
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.flipButton}
@@ -57,7 +78,7 @@ const CameraScreen: React.FC = () => {
                         <Text style={styles.text}> Flip </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        onPress={() => takePicture}
+                        onPress={takePicture}
                         style={styles.snapButton}
                     />
                 </View>
