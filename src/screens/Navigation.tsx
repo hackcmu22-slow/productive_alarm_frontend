@@ -2,8 +2,9 @@ import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
 
 import CustomButton from "../components/CustomButton";
+import { ScreenProps } from "../screenTypes";
 
-const Navigation: React.FC = ({ navigation }: any) => {
+const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenProps<"Navigation">) => {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
