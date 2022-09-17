@@ -24,7 +24,7 @@ const Register: React.FC = () => {
       setSnackMessage("Please enter your name");
       return;
     }
-    return createUserWithEmailAndPassword(firebaseAuth, email.trim(), password)
+    createUserWithEmailAndPassword(firebaseAuth, email.trim(), password)
       .then((userCredential) => {
         console.log(userCredential.user.email, "signed in successfully");
         try {

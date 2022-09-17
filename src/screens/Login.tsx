@@ -25,6 +25,7 @@ const Login: React.FC = ({ navigation }: any) => {
   const [snackIsVisible, setSnackIsVisible] = useState<boolean>(false);
   const [snackMessage, setSnackMessage] = useState<string>("");
 
+    /*
   const handleLogin = () => {
     signInWithEmailAndPassword(firebaseAuth, email.trim(), password)
       .then((userCredential) => {
@@ -46,7 +47,7 @@ const Login: React.FC = ({ navigation }: any) => {
         setSnackIsVisible(true);
         // console.log(error.code);
       });
-  };
+  };*/
   return (
     <ScrollView style={{ flex: 1 }}>
       <View
