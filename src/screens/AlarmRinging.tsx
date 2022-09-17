@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 import CustomButton from "../components/CustomButton";
@@ -6,6 +7,7 @@ import { renderTime } from "../utils/time";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import { ScreenProps } from "../screenTypes";
+import SoundContext, { PlayState } from "../components/SoundContext";
 
 const AlarmRinging = (props: ScreenProps<"AlarmRinging">): JSX.Element => {
   const colorScheme = useColorScheme();
@@ -13,6 +15,12 @@ const AlarmRinging = (props: ScreenProps<"AlarmRinging">): JSX.Element => {
     props.route.params.hour,
     props.route.params.minute
   );
+
+    const [_, setPlayState] = React.useContext(SoundContext);
+
+    React.useEffect(() => {
+        setPlayState(PlayState.LOOP);
+    }, []);
 
   return (
     <SafeAreaView style={styles.container}>

@@ -23,61 +23,59 @@ import { Audio } from "expo-av";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-
 // If you are getting type errors, you need to edit src/screenTypes.ts
 export default function App() {
   const [alarms, alarmsDispatch] = React.useReducer(reducer, {});
-    const [sound, setSound] = React.useState<Audio.Sound | null>(null);
+  const [sound, setSound] = React.useState<Audio.Sound | null>(null);
   const [playState, setPlayState] = React.useState<PlayState>(PlayState.PAUSED);
-    const [hasPendingAction, setHasPendingAction] = React.useState(false);
+  const [hasPendingAction, setHasPendingAction] = React.useState(false);
 
-    const updatePlayState = (newPlayState: PlayState) => {
-        setPlayState(newPlayState);
-        setHasPendingAction(true);
-    }
+  const updatePlayState = (newPlayState: PlayState) => {
+    setPlayState(newPlayState);
+    setHasPendingAction(true);
+  };
 
-    React.useEffect(() => {
-        const loadSound = async () => {
-            const { sound } = await Audio.Sound.createAsync(require('./src/assets/alarm1.mp3'));
-            await sound.setVolumeAsync(1.0);
-            console.log("Loaded!");
-            sound.setOnPlaybackStatusUpdate((status) => {
-                if (status.isLoaded && status.didJustFinish && !status.isLooping) {
-                    updatePlayState(PlayState.PAUSED);
-                }
-            })
-            setSound(sound);
-        };
-        loadSound();
-    }, []);
-
-    React.useEffect(() => {
-        const play = async () => {
-            console.log("called");
-            if (hasPendingAction) {
-                console.log("hello")
-                console.log(playState);
-                switch (playState) {
-                    case PlayState.PLAY_ONCE:
-                        await sound?.setIsLoopingAsync(false);
-                        await sound?.playAsync();
-                        break;
-                    case PlayState.LOOP:
-                        await sound?.setIsLoopingAsync(true);
-                        await sound?.playAsync();
-                        break;
-                    case PlayState.PAUSED:
-                        console.log("Pausing.");
-                        await sound?.pauseAsync();
-                        await sound?.stopAsync();
-                        break;
-                }
-                setHasPendingAction(false);
-            }
+  React.useEffect(() => {
+    const loadSound = async () => {
+      const { sound } = await Audio.Sound.createAsync(
+        require("./src/assets/alarm1.mp3")
+      );
+      await sound.setVolumeAsync(1.0);
+      console.log("Loaded!");
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.isLoaded && status.didJustFinish && !status.isLooping) {
+          updatePlayState(PlayState.PAUSED);
         }
+      });
+      setSound(sound);
+    };
+    loadSound();
+  }, []);
 
-        play();
-    }, [hasPendingAction, playState]);
+  React.useEffect(() => {
+    const play = async () => {
+      if (hasPendingAction) {
+        switch (playState) {
+          case PlayState.PLAY_ONCE:
+            await sound?.setIsLoopingAsync(false);
+            await sound?.playAsync();
+            break;
+          case PlayState.LOOP:
+            await sound?.setIsLoopingAsync(true);
+            await sound?.playAsync();
+            break;
+          case PlayState.PAUSED:
+            console.log("Pausing.");
+            await sound?.pauseAsync();
+            await sound?.stopAsync();
+            break;
+        }
+        setHasPendingAction(false);
+      }
+    };
+
+    play();
+  }, [hasPendingAction, playState]);
 
   return (
     <PaperProvider theme={MD3LightTheme}>
