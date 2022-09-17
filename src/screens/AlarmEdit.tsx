@@ -5,6 +5,7 @@ import { AmPm } from "../utils/time";
 import { TextInput as DefaultTextInput } from "react-native";
 import { ScreenProps } from "../screenTypes";
 import { Audio } from "expo-av";
+import withAlarmFiring from "../components/withAlarmFiring";
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -70,7 +71,7 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
       const hour = ((props.route.params.hour + 11) % 12) + 1;
       setHour(hour);
       setHourText(String(hour));
-      setAmPm(hour < 12 ? "AM" : "PM");
+      setAmPm(props.route.params.hour < 12 ? "AM" : "PM");
 
       const minute = props.route.params.minute;
       setMinute(minute);
@@ -175,4 +176,4 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
   );
 };
 
-export default AlarmEdit;
+export default withAlarmFiring(AlarmEdit);

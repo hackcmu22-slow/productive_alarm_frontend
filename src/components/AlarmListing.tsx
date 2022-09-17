@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { Card, IconButton, Switch, Text } from "react-native-paper";
+import { AlarmInfo } from "../store/alarms";
 import { renderTime } from "../utils/time";
 
 const styles = StyleSheet.create({
@@ -12,13 +13,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
 });
-
-export interface AlarmInfo {
-  name: string;
-  hour: number; // 24 hour
-  minute: number;
-  enabled: boolean;
-}
 
 export interface AlarmListingProps extends AlarmInfo {
   onEnabledChange: (newState: boolean) => void;
