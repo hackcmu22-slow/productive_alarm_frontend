@@ -29,6 +29,7 @@ const Login: React.FC = ({ navigation }: any) => {
     signInWithEmailAndPassword(firebaseAuth, email.trim(), password)
       .then((userCredential) => {
         const user = userCredential.user;
+        navigation.navigate("Dashboard")
         console.log(user.email, "successfully signed in!");
       })
       .catch((error: any) => {

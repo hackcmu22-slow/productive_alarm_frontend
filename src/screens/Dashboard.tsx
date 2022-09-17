@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   bigTitle: {
     color: '#6a86ed',
     fontWeight: 'bold',
-    fontFamily: "Comic Sans",
+    fontFamily: "Arial",
     fontSize: 40,
     alignText: "left",
   },
