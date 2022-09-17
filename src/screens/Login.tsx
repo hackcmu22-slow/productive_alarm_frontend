@@ -89,7 +89,7 @@ const Login: React.FC = ({ navigation }: any) => {
         <CustomButton
           mode="contained"
           style={[styles.button, { marginBottom: 12 }]}
-          onPress={handleLogin}
+          onPress={() => navigation.navigate("Dashboard")}
         >
           SIGN IN
         </CustomButton>
