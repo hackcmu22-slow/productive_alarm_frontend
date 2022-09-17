@@ -17,7 +17,7 @@ import Register from "./RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
-const Login: React.FC = () => {
+const Login: React.FC = ({ navigation }: any) => {
   const colorScheme = useColorScheme();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
           mode="outlined"
           color={Colors[colorScheme].tint}
           style={styles.button}
-          onPress={() => {<Stack.Screen name="RegisterScreen" component={Register} options={{ title: "RegisterScreen"}}/>}}
+          onPress={handleLogin}
         >
           SIGN UP
         </CustomButton>
