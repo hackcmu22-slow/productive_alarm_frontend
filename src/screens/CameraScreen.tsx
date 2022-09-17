@@ -8,13 +8,13 @@ import useColorScheme from "../hooks/useColorScheme";
 
 const CameraScreen: React.FC = () => {
     let camera = Camera;
-    const [hasPermission, setHasPermission] = useState(null);
+    const [hasPermission, setHasPermission] = useState(false);
     const [type, setType] = useState(CameraType.back);
 
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestCameraPermissionsAsync();
-            setHasPermission(status === 'granted');
+            setHasPermission(status === "granted");
         })();
     }, []);
 
