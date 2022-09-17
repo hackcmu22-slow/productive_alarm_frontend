@@ -4,75 +4,79 @@ import { Text } from "react-native-paper";
 import CustomButton from "../components/CustomButton";
 import { ScreenProps } from "../screenTypes";
 
-const Navigation: React.FC<ScreenProps<"Navigation">> = ({ navigation }: ScreenProps<"Navigation">) => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <Text>Navigation Page</Text>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Login')}
-                >
-                Login
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Register')}
-                >
-                Register
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Alarms')}
-                >
-                Alarm
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('Success')}
-                >
-                Success
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-<<<<<<< HEAD
-                    onPress={() => navigation.navigate('Wait')}
-                >
-                Wait
-=======
-                    onPress={() => navigation.navigate('TakePictureScreen')}
-                >
-                Take Picture
->>>>>>> master
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-<<<<<<< HEAD
-                    onPress={() => navigation.navigate('Dashboard')}
-                >
-                Dashboard
-=======
-                    onPress={() => navigation.navigate('CameraScreen')}
-                >
-                Camera Screen
->>>>>>> master
-                </CustomButton>
-                <CustomButton
-                    mode="outlined"
-                    style={styles.button}
-                    onPress={() => navigation.navigate('TEMPLATE COPY ME')}
-                >
-                TEMPLATE COPY ME
-                </CustomButton>
-            </ScrollView>
-        </SafeAreaView>
-    );
+const Navigation: React.FC<ScreenProps<"Navigation">> = ({
+  navigation,
+}: ScreenProps<"Navigation">) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Text>Navigation Page</Text>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Login")}
+        >
+          Login
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Register")}
+        >
+          Register
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Alarms")}
+        >
+          Alarm
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Success")}
+        >
+          Success
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Wait")}
+        >
+          Wait
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("TakePictureScreen")}
+        >
+          Take Picture
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("Dashboard")}
+        >
+          Dashboard
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("CameraScreen")}
+        >
+          Camera Screen
+        </CustomButton>
+        <CustomButton
+          mode="outlined"
+          style={styles.button}
+          onPress={() => navigation.navigate("TEMPLATE COPY ME")}
+        >
+          TEMPLATE COPY ME
+        </CustomButton>
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 
 // Standardized template for card
