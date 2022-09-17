@@ -11,6 +11,7 @@ import AlarmEdit from "./src/screens/AlarmEdit";
 import { capitalize } from "./src/utils/text";
 import Navigation from "./src/screens/Navigation";
 import Success from "./src/screens/Success";
+import Wait from "./src/screens/Wait";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -53,7 +54,8 @@ export default function App() {
             options={{ title: "Success"}}
           />
           <Stack.Screen 
-            name="Wait" component={Wait} 
+            name="Wait" 
+            component={Wait} 
             options={{ title: "Wait"}}
           />
           <Stack.Screen
@@ -63,6 +65,7 @@ export default function App() {
           />
           
         </Stack.Navigator>
+
       </NavigationContainer>
     </PaperProvider>
   );
