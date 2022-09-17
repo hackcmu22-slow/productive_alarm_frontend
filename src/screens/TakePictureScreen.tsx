@@ -1,51 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react'
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword} from "firebase/auth";
 
-export default function TakePictureScreen() {
+import React from 'react';
+import { useState } from "react";
+import { Image, StyleSheet, View } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import CustomButton from "../components/CustomButton";
+import CustomTextInput from "../components/CustomInputText";
+import CustomSnackBar from "../components/CustomSnackBar";
+import { ScrollView } from "../components/Themed";
+import Colors from "../constants/Colors";
+import { firebaseAuth } from "../firebase/firebase";
+import useColorScheme from "../hooks/useColorScheme";
+import Register from "./RegisterScreen";
+
+const Stack = createNativeStackNavigator();
+
+const TakePictureScreen: React.FC = ({ navigation }: any) => {
+  const colorScheme = useColorScheme();
   return (
-    <View style={styles.container}>
+    <ScrollView style={{ flex: 1 }}>
       <View
         style={{
           flex: 1,
-          backgroundColor: '#fff',
-          justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 40,
+          marginTop: "70%",
         }}
       >
-        <TouchableOpacity
-          style={{
-            width: 130,
-            borderRadius: 4,
-            backgroundColor: '#14274e',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: 40
-          }}
+        <CustomButton
+          mode="outlined"
+          color={Colors[colorScheme].tint}
+          style={styles.button}
+          onPress={() => navigation.navigate("CameraScreen")}
         >
-          <Text
-            style={{
-              color: '#fff',
-              fontWeight: 'bold',
-              textAlign: 'center'
-            }}
-          >
-            Take picture
-          </Text>
-        </TouchableOpacity>
+          Take Picture
+        </CustomButton>
       </View>
-
-      <StatusBar style="auto" />
-    </View>
-  )
-}
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+  button: {
+    marginHorizontal: 30,
+    width: 160,
+  },
+});
+
+export default TakePictureScreen;
