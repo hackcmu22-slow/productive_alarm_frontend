@@ -2,6 +2,7 @@ import { MD3LightTheme, Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "./src/screens/Login";
+import Register from "./src/screens/RegisterScreen";
 import AlarmList from "./src/screens/AlarmList";
 import TemplateCopyMe from "./src/screens/TemplateCopyMe";
 import { RootStackParamList } from "./src/screenTypes";
@@ -15,6 +16,13 @@ export default function App() {
   return (
     <PaperProvider theme={MD3LightTheme}>
       <NavigationContainer>
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ title: "Login" }}
+          />
+
+                <Stack.Screen name="Register" component={Register} options={{ title: "Register"}}/>
         <Stack.Navigator>
           <Stack.Screen
             name="Alarms"
@@ -25,11 +33,6 @@ export default function App() {
             name="AlarmEdit"
             component={AlarmEdit}
             options={({ route }) => ({ title: capitalize(route.params.mode) + " Alarm" })}
-          />
-          <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{ title: "Login" }}
           />
           <Stack.Screen
             name="TEMPLATE COPY ME"

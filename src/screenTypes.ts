@@ -5,6 +5,7 @@ type AlarmEditMode = { mode: "create" } | ({ mode: "update"; id: string } & Alar
 
 export type RootStackParamList = {
   Login: undefined;
+  Register: undefined;
   Alarms:
     | undefined
     | (AlarmEditMode & { hour: number; minute: number; name: string });
