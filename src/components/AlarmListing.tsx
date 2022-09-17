@@ -1,11 +1,15 @@
 import * as React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Card, IconButton, Switch, Text } from "react-native-paper";
+import { renderTime } from "../utils/time";
 
 const styles = StyleSheet.create({
   alarmContent: {
     flex: 1,
     flexDirection: "row",
+  },
+  timeElement: {
+    flexGrow: 1,
   },
 });
 
@@ -24,15 +28,20 @@ const AlarmListing: React.FC<AlarmListingProps> = (
     props.onEnabledChange(!props.enabled);
   };
 
+  const timeComponents = renderTime(props.hour, props.minute);
+
   return (
     <Card>
       <Card.Title title={props.name} />
       <Card.Content style={styles.alarmContent}>
-        <Text variant="displayMedium" /* HH:MM */>
-          {String(props.hour).padStart(2, "0")}:
-          {String(props.minute).padStart(2, "0")}
-        </Text>
-        <Switch value={props.enabled} onValueChange={handleSwitch} />
+        <View style={styles.timeElement}>
+          <Text variant="displayMedium" /* HH:MM */>
+            {timeComponents.hour}:{timeComponents.minute} {timeComponents.ampm}
+          </Text>
+        </View>
+        <View>
+          <Switch value={props.enabled} onValueChange={handleSwitch} />
+        </View>
       </Card.Content>
       <Card.Actions>
         <IconButton icon="pencil" mode="contained-tonal" />
