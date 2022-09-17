@@ -1,9 +1,10 @@
 import * as React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
-import { FAB, Text, TextInput } from "react-native-paper";
+import { Button, FAB, Text, TextInput } from "react-native-paper";
 import { AmPm } from "../utils/time";
 import { TextInput as DefaultTextInput } from "react-native";
 import { ScreenProps } from "../screenTypes";
+import { Audio } from "expo-av";
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -12,12 +13,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    paddingVertical: 15,
+    paddingVertical: 16,
     paddingHorizontal: 15,
   },
   timeElement: {
     alignSelf: "center",
-    flex: 1,
     flexDirection: "row",
     marginBottom: 45,
   },
@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
     margin: 16,
     position: "absolute",
   },
+  previewSoundButtonContainer: {
+    marginTop: 20,
+    paddingHorizontal: "20%",
+  },
 });
 
 const hourRegex = /^(|0?[1-9]|1[0-2])$/;
@@ -58,6 +62,8 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
   const [minuteText, setMinuteText] = React.useState("00");
 
   const [name, setName] = React.useState("");
+
+  const [sound, setSound] = React.useState<Audio.Sound | null>(null);
 
   React.useEffect(() => {
     if (props.route.params.mode === "update") {
@@ -117,6 +123,20 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
     });
   };
 
+  const handlePreviewSound = async () => {
+    if (sound) {
+      setSound(null);
+      await sound.stopAsync();
+    } else {
+      const { sound: loadedSound } = await Audio.Sound.createAsync(
+        require("../assets/alarm1.mp3")
+      );
+      setSound(loadedSound);
+      await loadedSound.setVolumeAsync(1.0);
+      await loadedSound.playAsync();
+    }
+  };
+
   return (
     <SafeAreaView style={styles.outerContainer}>
       <ScrollView style={styles.container}>
@@ -142,7 +162,13 @@ const AlarmEdit: React.FC<ScreenProps<"AlarmEdit">> = (
             {amPm}
           </Text>
         </View>
+
         <TextInput label="Alarm Name" value={name} onChangeText={setName} />
+        <View style={styles.previewSoundButtonContainer}>
+          <Button mode="contained" onPress={handlePreviewSound}>
+            {sound ? "Stop Preview" : "Preview Sound"}
+          </Button>
+        </View>
       </ScrollView>
       <FAB icon="check-bold" style={styles.fab} onPress={handleDone} />
     </SafeAreaView>
