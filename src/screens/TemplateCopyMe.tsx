@@ -1,11 +1,14 @@
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
+<<<<<<< HEAD
 
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
 //   },
 // });
+=======
+>>>>>>> master
 
 const TemplateCopyMe: React.FC = () => {
   return (
